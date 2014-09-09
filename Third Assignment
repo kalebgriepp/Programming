@@ -1,0 +1,539 @@
+/* 
+ * Assignment:   Assignment 3.cpp
+ * Author: Kaleb Griepp
+ *
+ * Created on February 24, 2014, 3:00 PM
+ * NOTE: I have rearranged the problems for #3-8 in order of the quadrant being built in a coordinate system.
+ *       They now are listed as #3, 4, 5, 8, 7, 6, 9. Sorry for the inconvenience.
+ */
+
+#include <cstdlib>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int colcntr = 0;
+int rows = 0;
+int rowcntr = 0;
+
+void Problem1() //Problem 1: Calculate the total deposit after taxes have been removed.
+{
+    cout << "Problem 1: Calculate the total deposit after taxes have been removed." << endl;
+    int deposit;
+    double a = 0;
+
+    cout << "           Enter your amount to deposit.    ";
+    cin >> deposit;
+
+    if (deposit > 0 && deposit <= 500)
+    {
+        double xans = 0;
+        xans = deposit * 1.05;
+        cout << "           You have " << xans << " dollars now." << endl;
+    }
+    else if (deposit >= 501 && deposit <= 1000)
+    {
+        double xans = 0;
+        xans = deposit * 1.10;
+        cout << "You have " << xans << " dollars now." << endl;
+    }
+    else if (deposit >= 1001)
+    {
+        double xans = 0;
+        xans = deposit * 1.20;
+        cout << "You have " << xans << " dollars now." << endl;
+    }
+    return;
+}
+
+void Problem2() //Problem 2: User enters a beginning and ending number;
+//computer prints intervals of five between the two numbers.
+{
+    cout << "Problem 2: User enters a beginning and ending number," << endl;
+    cout << "           computer prints intervals of five between the two numbers." << endl << endl;
+    int cntr1;
+    int num2;
+
+    cout << "           Enter a number.    ";
+    cin >> cntr1;
+    cout << "           Enter a second number larger than the first.    ";
+    cin >> num2;
+
+    for (cntr1; cntr1 <= num2; cntr1 = cntr1 + 5.0)
+    {
+        cout << "           " << cntr1;
+        cout << " " << endl;
+    }
+    return;
+}
+
+void Problem3(int colwidth, int incr) //Problem 3: Print the right side of a diamond.
+{
+    int colcntr = 0.0;
+
+    if (colwidth == 6.0)
+    {
+        incr = -1.0;
+        colwidth == 4.0;
+    }
+    else if (colwidth == 0.0)
+    {
+        return;
+    }
+    while (colcntr < colwidth)
+    {
+        cout << "X";
+        colcntr++;
+    }
+    cout << endl;
+    colwidth = colwidth + incr;
+    Problem3(colwidth, incr);
+}
+
+void Problem4() //Problem 4: Print a 10x10 grid made of 'X's using two 'for' loops.
+{
+    cout << "\nProblem 4: Print a 10x10 grid made of 'X's using two 'for' loops." << endl;
+
+    for (int cntrows = 0; cntrows < 10; cntrows++)
+    {
+        for (int cntr2 = 0; cntr2 < 10; cntr2++)
+        {
+            cout << "X";
+        }
+        cout << endl;
+    }
+}
+
+void Problem5() //Problem 5: Print the first quadrant of a diamond.
+{
+    cout << "\nProblem 5: Print the first quadrant of a diamond.";
+    int colwidth = 0;
+
+    while (rows <= 10.0)
+    {
+        while (colcntr < colwidth)
+        {
+            cout << "X";
+            colcntr++;
+        }
+        colcntr = 0;
+        rows++;
+        colwidth++;
+        cout << endl;
+    }
+    return;
+}
+
+void Problem8() //Problem 8: Print the second quadrant of a diamond.
+{
+    cout << "\nProblem 8: Print the second quadrant of a diamond." << endl;
+    int colwidth = 10;
+    int rows = 0;
+    int swidth = 0;
+    int scntr = 10;
+
+    while (rows <= 10.0)
+    {
+        while (colcntr < colwidth)
+        {
+            cout << " ";
+            colcntr++;
+        }
+        while (scntr < swidth)
+        {
+            cout << "X";
+            scntr++;
+        }
+        colcntr = 0;
+        colwidth--;
+        rows++;
+        cout << endl;
+        scntr = 0;
+        swidth++;
+    }
+    return;
+}
+
+void Problem7() //Problem 7: Print the third quadrant of a diamond.
+{
+    cout << "\nProblem 7: Print the third quadrant of a diamond." << endl;
+    int colwidth = 0;
+    int rows = 0;
+    int swidth = 10;
+    int scntr = 0;
+
+    while (rows <= 10.0)
+    {
+        while (colcntr < colwidth)
+        {
+            cout << " ";
+            colcntr++;
+        }
+        while (scntr < swidth)
+        {
+            cout << "X";
+            scntr++;
+        }
+        colcntr = 0;
+        colwidth++;
+        rows++;
+        cout << endl;
+        scntr = 0;
+        swidth--;
+    }
+    return;
+
+}
+
+void Problem6() //Problem 6: Print the fourth quadrant of a diamond.
+{
+    cout << "\nProblem 6: Print the fourth quadrant of a diamond." << endl;
+    int colwidth = 10;
+
+    int rowcntr = 0;
+
+    while (rowcntr < 10.0)
+    {
+        while (colcntr < colwidth)
+        {
+            cout << "X";
+            colcntr++;
+        }
+        colcntr = 0;
+        rowcntr++;
+        colwidth--;
+        cout << endl;
+    }
+    return;
+}
+
+void Problem9() //Problem 9: Print the completed diamond.
+{
+    cout << "\nProblem 9: Print the completed diamond." << endl;
+    int colwidth = 10;
+    int rows = 0;
+    int swidth = 0;
+    int scntr = 10;
+
+    while (rows <= 10.0)
+    {
+        while (colcntr < colwidth)
+        {
+            cout << " ";
+            colcntr++;
+        }
+        while (scntr < swidth)
+        {
+            cout << "X";
+            scntr++;
+        }
+        colcntr = 0;
+        colwidth--;
+        rows++;
+        cout << endl;
+        scntr = 0;
+        swidth = swidth + 2;
+    }
+    {
+        int colwidth = 0;
+        int rows = 0;
+        int swidth = 20;
+        int scntr = 0;
+
+        while (rows <= 10.0)
+        {
+            while (colcntr < colwidth)
+            {
+                cout << " ";
+                colcntr++;
+            }
+            while (scntr < swidth)
+            {
+                cout << "X";
+                scntr++;
+            }
+            colcntr = 0;
+            colwidth++;
+            rows++;
+            cout << endl;
+            scntr = 0;
+            swidth = swidth - 2;
+        }
+        return;
+    }
+}
+
+void Problem10() //Problem 10: Print an empty square frame.
+{
+    cout << "\nProblem 10: Print an empty square frame." << endl;
+    int colwidth = 20;
+    int rowcntr = 0;
+    int rowlength = 10;
+
+    while (rowcntr < rowlength)
+    {
+        while (colcntr < colwidth)
+        {
+            if (((rowcntr > 1) && (rowcntr < 8)) && ((colcntr > 1) && (colcntr < 18)))
+            {
+                cout << " ";
+            }
+            else
+            {
+                cout << "X";
+            }
+            colcntr++;
+        }
+        colcntr = 0;
+        rowcntr++;
+        cout << endl;
+    }
+}
+
+void Problem11() //Problem 11: Print a hollow diamond.
+{
+    cout << "\nProblem 11: Print a hollow diamond." << endl;
+    int colwidth = 12;
+    int rows = 0;
+    int swidth = 0;
+    int scntr = 10;
+
+    while (rows <= 10.0)
+    {
+        while (colcntr < colwidth)
+        {
+            if ((colcntr >= 0) && (colcntr < colwidth - 2.0))
+            {
+                cout << " ";
+                colcntr++;
+            }
+            else
+            {
+                cout << "X";
+                colcntr++;
+            }
+        }
+        while (scntr < swidth)
+        {
+            if ((scntr >= 0) && (scntr < swidth - 2.0))
+            {
+                cout << " ";
+                scntr++;
+            }
+            else
+            {
+                cout << "X";
+                scntr++;
+            }
+        }
+        colcntr = 0;
+        colwidth--;
+        rows++;
+        cout << endl;
+        scntr = 0;
+        swidth = swidth + 2;
+    }
+    {
+        int colwidth = 2.0;
+        int rows = 0;
+        int swidth = 20;
+        int scntr = 0;
+
+        while (rows <= 10.0)
+        {
+            while (colcntr < colwidth)
+            {
+                if ((colcntr >= 0) && (colcntr < colwidth - 2.0))
+                {
+                    cout << " ";
+                    colcntr++;
+                }
+                else
+                {
+                    cout << "X";
+                    colcntr++;
+                }
+            }
+            while (scntr < swidth)
+            {
+                if ((scntr >= 0) && (scntr < swidth - 2.0))
+                {
+                    cout << " ";
+                    scntr++;
+                }
+                else
+                {
+                    cout << "X";
+                    scntr++;
+                }
+            }
+            colcntr = 0;
+            colwidth++;
+            rows++;
+            cout << endl;
+            scntr = 0;
+            swidth = swidth - 2;
+        }
+        return;
+    }
+}
+
+void Problem12() //Problem 12: Print a square frame with a solid square in the center.
+{
+    cout << "\nProblem 12: Print a square frame with a solid square in the center." << endl;
+    int colwidth = 39.0;
+    int rowlength = 22.0;
+
+    for (rowcntr = 0; rowcntr <= rowlength; rowcntr++)
+    {
+        for (colcntr = 0; colcntr <= colwidth; colcntr++)
+        {
+            if (((rowcntr > 2.0) && (rowcntr <= 18.0)) && ((colcntr > 2.0) && (colcntr <= (colwidth - 5.0)))) //Assigns the spaces surrounding the square.
+            {
+                if (((rowcntr > 6.0) && (rowcntr <= 14.0)) && ((colcntr > 6.0) && (colcntr <= (colwidth - 9.0)))) //Assigns the internal square dimensions.
+                {
+                    cout << "X";
+                }
+                else
+                {
+                    cout << " ";
+                }
+            }
+            else
+            {
+                cout << "X";
+            }
+            colcntr++;
+        }
+        rowcntr++;
+        cout << endl;
+    }
+}
+
+void Problem13() //Problem 13: Print a diamond within a frame.
+{
+    cout << "\nProblem 13: Print a diamond within a frame." << endl;
+    cout << "XXXXXXXXXXXXXXXX" << endl;
+    cout << "XXXXXXXXXXXXXXXX" << endl;
+    cout << "XX     XX     XX" << endl;
+    cout << "XX    XXXX    XX" << endl;
+    cout << "XX   XXXXXX   XX" << endl;
+    cout << "XX  XXXXXXXX  XX" << endl;
+    cout << "XX  XXXXXXXX  XX" << endl;
+    cout << "XX   XXXXXX   XX" << endl;
+    cout << "XX    XXXX    XX" << endl;
+    cout << "XX     XX     XX" << endl;
+    cout << "XXXXXXXXXXXXXXXX" << endl;
+    cout << "XXXXXXXXXXXXXXXX" << endl << endl;
+}
+
+int main(int argc, char** argv)
+{
+    for (;;)
+    {
+        int choice = 1.0;
+        string x;
+        string end = "end";
+        string all = "all";
+        cout << "\nEnter the problem you wish to see. Typing 'end' will quit this assignment." << endl;
+        cout << "Alternatively, typing 'all' will run every problem sequentially." << endl;
+        cin >> x;
+        if (x == end)
+        {
+            break;
+        }
+        if (x == all)
+        {
+            Problem1();
+            cout << endl;
+            Problem2();
+            cout << "\nProblem 3: Print the right side of a diamond." << endl;
+            Problem3(1, 1);
+            Problem4();
+            Problem5();
+            Problem6();
+            Problem7();
+            Problem8();
+            Problem9();
+            Problem10();
+            Problem11();
+            Problem12();
+            Problem13();
+        }
+        choice = atoi(x.c_str());
+
+        switch (choice)
+        {
+            case 1:
+                cout << endl;
+                Problem1();
+                break;
+
+            case 2:
+                cout << endl;
+                Problem2();
+                break;
+
+            case 3:
+                cout << endl;
+                cout << "\nProblem 3: Print the right side of a diamond." << endl;
+                Problem3(1, 1);
+                break;
+
+            case 4:
+                cout << endl;
+                Problem4();
+                break;
+
+            case 5:
+                cout << endl;
+                Problem5();
+                break;
+
+            case 6:
+                cout << endl;
+                Problem6();
+                break;
+
+            case 7:
+                cout << endl;
+                Problem7();
+                break;
+
+            case 8:
+                cout << endl;
+                Problem8();
+                break;
+
+            case 9:
+                cout << endl;
+                Problem9();
+                break;
+
+            case 10:
+                cout << endl;
+                Problem10();
+                break;
+
+            case 11:
+                cout << endl;
+                Problem11();
+                break;
+
+            case 12:
+                cout << endl;
+                Problem12();
+                break;
+
+            case 13:
+                cout << endl;
+                Problem13();
+                break;
+        }
+    }
+
+    cin.get();
+
+    return 0;
+}
