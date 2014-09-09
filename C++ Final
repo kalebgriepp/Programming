@@ -1,0 +1,213 @@
+/* 
+ * File:   Final.cpp
+ * Author: Kaleb
+ *
+ * Created on May 23, 2014, 1:20 PM
+ * Completed May 27, 2014, 9:50 PM
+ */
+
+#include <cstdlib>
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+struct employee
+{
+    string firstname;
+    string lastname;
+    double salary;
+    double temployed;
+};
+
+int main(int argc, char** argv)
+{
+    cout << "This is the final assignment for this class." << endl;
+    cout << "You'll be entering employee data into a vector." << endl;
+    cin.get();
+
+    string addinfo = "y";
+    string printfile = "y";
+    string findperson = "y";
+    string richestlastname;
+    string poorestlastname;
+
+    int cntr = 0;
+    int vcntr = -1;
+
+    double searchbigmoney;
+    double searchnomoney = 10000000;
+
+    vector<employee> information;
+
+    employee xx;
+
+    xx.firstname;
+    xx.lastname;
+    xx.salary;
+    xx.temployed;
+
+    cout << "Would you like to enter employee information? y/n" << endl << endl;
+    cin >> addinfo;
+
+    while (addinfo == "y")
+    {
+        vcntr++;
+
+        information.push_back(employee());
+
+        cout << "Please enter the first name." << endl;
+        cin >> information.at(vcntr).firstname;
+        cout << "\nPlease enter the last name." << endl;
+        cin >> information.at(vcntr).lastname;
+        cout << "\nPlease enter the monthly salary." << endl;
+        cin >> information.at(vcntr).salary;
+        cout << "\nPlease enter the time of employment, in months." << endl;
+        cin >> information.at(vcntr).temployed;
+
+        cout << "\nWould you like to add more employee information? y/n" << endl;
+        cin >> addinfo;
+    }
+
+    //This function makes it possible for the user to print the employee file contents
+    cout << "\nWould you like to print the contents of your employee files? y/n" << endl;
+    cin >> printfile;
+
+    //This prints the address and the contents
+    if (printfile == "y")
+    {
+        cout << endl;
+        for (int cntr = 0; cntr < information.size(); cntr++)
+        {
+            cout << cntr << " " << information.at(cntr).firstname << endl;
+            cout << cntr << " " << information.at(cntr).lastname << endl;
+            cout << cntr << " " << information.at(cntr).salary << endl;
+            cout << cntr << " " << information.at(cntr).temployed << endl << endl;
+        }
+    }
+
+    { //For use later in the program, this is where I find the outlying employees
+        if ((information.at(vcntr).salary * information.at(vcntr).temployed) >= searchbigmoney)
+        {
+            searchbigmoney = information.at(vcntr).salary * information.at(vcntr).temployed;
+            richestlastname = information.at(vcntr).lastname;
+        }
+        if ((information.at(vcntr).salary * information.at(vcntr).temployed) <= searchnomoney)
+        {
+            searchnomoney = information.at(vcntr).salary * information.at(vcntr).temployed;
+            poorestlastname = information.at(vcntr).lastname;
+        }
+    }
+
+    cout << "Search farther into your business files? y/n" << endl;
+    cin >> findperson;
+
+    if (findperson == "y")
+    {
+        for (;;)
+        {
+            int choice = 1.0;
+            double grosstotalpay;
+            double averagetotalpay;
+
+            string menuchoice;
+            string endnow = "end";
+
+            cout << "\nEnter the way you would like to search: " << endl;
+            cout << "1 for finding the gross pay of all employees, 2 to find the average" << endl;
+            cout << "gross salary, 3 to show the information of the highest paid employee," << endl;
+            cout << "or 4 to show the information of the employee who earns the least per month." << endl;
+            cout << "Alternatively, type 'end' to quit altogether" << endl;
+            cin >> menuchoice;
+
+            if (menuchoice == endnow)
+            {
+                break;
+            }
+
+            choice = atoi(menuchoice.c_str());
+
+            switch (choice)
+            {
+                case 1: //Compute the total gross pay of all the employee’s. 
+                    //Note individual gross pay is months X monthly salary.
+                {
+                    cout << endl;
+                    for (cntr = 0; cntr < information.size(); cntr++)
+                    {
+                        grosstotalpay = grosstotalpay + ((information.at(cntr).salary)*(information.at(cntr).temployed));
+                    }
+                    cout << "The total gross pay is: $" << grosstotalpay << endl;
+                    cout << "Do you want to continue with another choice? " << endl;
+                    cin >> addinfo;
+                    if (addinfo == "y")
+                    {
+                        break;
+                    }
+                    cin.get();
+                    cin.ignore();
+
+                    return 0;
+                }
+
+                case 2: //Compute the average gross pay of all the employees
+                {
+                    cout << endl;
+                    for (cntr = 0; cntr < information.size(); cntr++)
+                    {
+                        grosstotalpay = grosstotalpay + ((information.at(cntr).salary)*(information.at(cntr).temployed));
+                        averagetotalpay = grosstotalpay / information.size();
+                    }
+                    cout << "The average gross pay is: $" << averagetotalpay << endl;
+                    cout << "Do you want to continue with another choice? " << endl;
+                    cin >> addinfo;
+                    if (addinfo == "y")
+                    {
+                        break;
+                    }
+                    cin.get();
+                    cin.ignore();
+
+                    return 0;
+                }
+
+                case 3: //Show the last name and the amount of the employee 
+                    //who had the greatest gross pay
+                {
+                    cout << endl;
+                    cout << "The largest gross wage is: $" << searchbigmoney << "-" << richestlastname << endl;
+                    cout << endl;
+                    cout << "Do you want to continue with another choice? " << endl;
+                    cin >> addinfo;
+                    if (addinfo == "y")
+                    {
+                        break;
+                    }
+                    cin.get();
+                    cin.ignore();
+
+                    return 0;
+                }
+
+                case 4: //Show the last name and the amount of the employee
+                    //who had the least gross pay
+                {
+                    cout << "The smallest gross wage is: $" << searchnomoney << " - " << poorestlastname << endl;
+                    cout << endl;
+                    cout << "Do you want to continue with another choice? " << endl;
+                    cin >> addinfo;
+                    if (addinfo == "y")
+                    {
+                        break;
+                    }
+                    cin.get();
+                    cin.ignore();
+                    return 0;
+                }
+            }
+        }
+    }
+    cin.get();
+    return 0;
+}
