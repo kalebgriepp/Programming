@@ -1,0 +1,112 @@
+/* 
+ * File:   main.cpp
+ * Author: Kaleb Griepp
+ *
+ * Created on January 27, 2014
+ */
+
+#include <cstdlib>
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main()
+{
+    //Variables
+    //Fahrenheit and Celsius
+    double xFdegrees = 0;
+    double xCdegrees = 0;
+
+    double xmph = 0;
+    double xknots = 0;
+
+    double xthickness = 0;
+    double xwidth = 0;
+    double xlength = 0;
+    double xboardfeet = 0;
+
+    double xgallons = 0;
+    double xliters = 0;
+
+    double xfeet = 0;
+    double xmeters = 0;
+
+    double xhours = 0;
+    double xdistance = 0;
+
+    double xmiles = 0;
+    //TTD=time to destination
+    double xTTD = 0;
+
+    //Used for ending the program after user presses key to continue
+    char quit;
+
+    //Problem 1: Convert Fahrenheit to Celsius
+    cout << "Enter Fahrenheit temperature: ";
+    cin >> xFdegrees;
+    xCdegrees = (xFdegrees - 32) * 5 / 9;
+    cout << "Celsius = " << xCdegrees << endl << endl;
+
+    //Problem 2: Convert Celsius to Fahrenheit
+    cout << "Enter Celsius temperature: ";
+    cin >> xCdegrees;
+    xFdegrees = xCdegrees * (9.0 / 5.0) + 32;
+    cout << "Fahrenheit = " << xFdegrees << endl << endl;
+
+    //Problem 3: Convert MPH to Knots
+    cout << "Enter Miles Per Hour: ";
+    cin >> xmph;
+    xknots = xmph * 0.87;
+    cout << "Your amount of Knots = " << xknots << endl << endl;
+
+    //Problem 4: Convert Knots to MPH
+    cout << "Enter Amount of Knots to Convert: ";
+    cin >> xknots;
+    xmph = xknots * 1.15;
+    cout << "Your Miles per Hour = " << xmph << endl << endl;
+
+    //Problem 5: Determine board feet
+    cout << "Enter the thickness: ";
+    cin >> xthickness;
+    cout << "Enter the width: ";
+    cin >> xwidth;
+    cout << "Enter the length: ";
+    cin >> xlength;
+    xboardfeet = (xthickness * xwidth * xlength) / 144.0;
+    cout << "The amount of board feet is: " << xboardfeet << endl << endl;
+
+    //Problem 6: Convert gallons to liters
+    cout << "Enter amount of gallons: ";
+    cin >> xgallons;
+    xliters = xgallons / 0.26417;
+    cout << "Your amount of liters is: " << xliters << endl << endl;
+
+    //Problem 7: Convert feet to meters
+    cout << "Enter amount of feet: ";
+    cin >> xfeet;
+    xmeters = xfeet / 3.2808;
+    cout << "Your amount of meters is: " << xmeters << endl << endl;
+
+    //Problem 8: Determine distance traveled
+    cout << "Enter velocity, in MPH: ";
+    cin >> xmph;
+    cout << "Enter time, in hours: ";
+    cin >> xhours;
+    xdistance = xmph * xhours;
+    cout << "Your distance traveled is: " << xdistance << endl << endl;
+
+    //Problem 9: Determine the time to your destination
+    cout << "Enter amount of miles traveled: ";
+    cin >> xmiles;
+    cout << "Enter velocity, in MPH: ";
+    cin >>xmph;
+    xTTD = xmiles / xmph;
+    cout << "Your travel time is: " << xTTD << endl << endl;
+
+    //Exit state:
+    cout << "This concludes the program. Press any key, then press enter to terminate." << endl;
+    cin >> quit;
+
+    return 0;
+}
