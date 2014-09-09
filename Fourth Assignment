@@ -1,0 +1,359 @@
+/* 
+ * File:   Assignment4.cpp
+ * Author: Kaleb Griepp
+ * Created on March 17, 2014, 2:49 PM
+ */
+
+#include <cstdlib>
+#include <string>
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void start()
+{
+    cout << "This is Assignment 4." << endl << endl;
+    return;
+}
+
+void problem1()
+{
+
+    double Larry[8] = {1, 2, 3, 4, 5, 6, 7, 8};
+
+    cout << "Problem 1" << endl;
+    cout << "Originally entered array by the user is: " << endl;
+
+    for (int j = 0; j < 8.0; j++)
+    {
+        cout << Larry[j];
+    }
+    cout << endl;
+
+    return;
+}
+
+void problem2()
+{
+    int Curly[8] = {1, 2, 3, 4, 5, 6, 7, 8};
+
+    cout << "\nProblem 2" << endl;
+    cout << "Originally entered array by the user is: " << endl;
+
+    for (int j = 0; j < 8.0; j++)
+    {
+        cout << Curly[j];
+    }
+    cout << endl;
+
+    return;
+}
+
+void problems3and4()
+{
+    int Shemp[8] = {180, 140, 130, 120, 110, 100, 160, 250};
+    int temp;
+    int arraysize = 8;
+
+    cout << "\nProblem 3/4" << endl;
+    cout << "Originally entered array by the user is: " << endl;
+
+    for (int j = 0; j < arraysize; j++)
+    {
+        cout << Shemp[j];
+        cout << endl;
+    }
+    cout << endl;
+
+    //Bubble Sort - sort the array
+    for (int i = 0; i < (arraysize - 1); i++)
+    {
+        for (int j = 0; j < (arraysize - 1); j++)
+        {
+            if (Shemp[j] < Shemp[j + 1])
+            {
+                temp = Shemp[j];
+                Shemp[j] = Shemp[j + 1];
+                Shemp[j + 1] = temp;
+            }
+        }
+    }
+
+    //Show the sorted array
+    cout << "Sorted Array is: " << endl;
+    for (int i = 0; i < arraysize; i++)
+    {
+        cout << Shemp[i] << endl;
+    }
+
+    return;
+}
+
+void problem5()
+{
+    int rows = 5.0;
+    int columns = 2.0;
+
+    cout << "\nProblem 5" << endl;
+    //Show the original data
+    cout << "Originally entered array by the user is: " << endl;
+
+    double BigGeorge[rows][columns];
+
+    BigGeorge[0][0] = 10;
+    BigGeorge[0][1] = 20;
+
+    BigGeorge[1][0] = 11;
+    BigGeorge[1][1] = 21;
+
+    BigGeorge[2][0] = 15;
+    BigGeorge[2][1] = 25;
+
+    BigGeorge[3][0] = 17;
+    BigGeorge[3][1] = 28;
+
+    BigGeorge[4][0] = 42;
+    BigGeorge[4][1] = 84;
+
+    for (int rowscntr = 0; rowscntr < 5; rowscntr++)
+    {
+        for (int colcntr = 0; colcntr < 2; colcntr++)
+        {
+            cout << BigGeorge[rowscntr][colcntr] << " ";
+        }
+        cout << endl;
+    }
+
+    return;
+}
+
+void problem6()
+{
+    int rows = 0;
+    int rowcell = 0;
+    int columns = 0;
+    int colcell = 0;
+    int value = 0;
+
+    int choice = 1.0;
+    string x;
+
+    choice = atoi(x.c_str());
+    cout << "\nThis is problem 6. Enter '1' to begin the problem." << endl;
+    cin >> choice;
+
+    double MySize[20][20];
+
+    switch (choice)
+    {
+        case 1:
+            //Problem 6a: create and display empty array
+            cout << "Part A: Enter a number for rows, followed by a number for columns." << endl;
+            cin >> rows;
+            cin >> columns;
+            cout << endl;
+
+            //Show the default array
+            cout << "Originally entered array by the user is: " << endl;
+
+            for (int rowscntr = 0; rowscntr < rows; rowscntr++)
+            {
+                for (int colcntr = 0; colcntr < columns; colcntr++)
+                {
+                    MySize[rowscntr][colcntr] = 0;
+                    cout << MySize[rowscntr][colcntr] << " ";
+                }
+                cout << endl;
+            }
+            cout << endl;
+
+        case 2:
+            //Problem 6b: Allow user to call a specific cell and fill it with data.
+            cout << "\nPart B: Enter the coordinates of the cell you'd like to fill." << endl;
+            cin >> rowcell;
+            cin >> colcell;
+            cout << "\nNow enter the value to be placed within this cell." << endl;
+            cin >> value;
+            MySize[rowcell][colcell] = value;
+            cout << endl;
+
+        case 3:
+            //Problem 6c: Display array with user's data included.
+            cout << "\nPart C: Display array with user data included." << endl;
+            for (int rowscntr = 0; rowscntr < rows; rowscntr++)
+            {
+                for (int colcntr = 0; colcntr < columns; colcntr++)
+                {
+                    cout << MySize[rowscntr][colcntr] << " ";
+                }
+                cout << endl;
+            }
+            cout << endl;
+
+        case 4:
+            //Problem 6d: Give user option to either clear the array or print the completed array.
+            cout << "Part D: Gives option to either clear the array or print the completed array." << endl;
+            //int problem = 1;
+            string xx;
+            string reset = "reset";
+            string display = "display";
+            cout << "\nChoose to 'reset' or 'display' the array." << endl;
+            cin >> xx;
+
+            //Reset the array option
+            if (xx == reset)
+            {
+                cout << "Your new array:" << endl;
+                for (int rowscntr = 0; rowscntr < rows; rowscntr++)
+                {
+                    for (int colcntr = 0; colcntr < columns; colcntr++)
+                    {
+                        MySize[rowscntr][colcntr] = 0;
+                        cout << MySize[rowscntr][colcntr] << " ";
+                    }
+                    cout << endl;
+                }
+                cout << endl;
+                break;
+            }
+
+            //Display the completed array option.
+            if (xx == display)
+            {
+                cout << "Your completed array:" << endl;
+                for (int rowscntr = 0; rowscntr < rows; rowscntr++)
+                {
+                    for (int colcntr = 0; colcntr < columns; colcntr++)
+                    {
+                        cout << MySize[rowscntr][colcntr] << " ";
+                    }
+                    cout << endl;
+                }
+                cout << endl;
+                break;
+            }
+    }
+}
+
+void problem7()
+{
+    cout << "This is problem 7. It will first display the vector with my favorite foods." << endl << endl;
+    // create a vector with the string name myFoods.
+    vector<string> myFoods;
+
+    //Store my 5 favorite foods within the vector.
+    myFoods.push_back("Pizza");
+    myFoods.push_back("Gumbo");
+    myFoods.push_back("Salad");
+    myFoods.push_back("Stew");
+    myFoods.push_back("Steak");
+
+    cout << "Items in vector:" << endl;
+    for (int cntr = 0; cntr < myFoods.size(); cntr++)
+    {
+        cout << myFoods.at(cntr) << endl;
+    }
+    cout << endl;
+
+    //Part 7b: Give user option to quit or display program again.
+    string y = "y";
+    string choice;
+    string favorite;
+
+    cout << endl << "Would you like to print the vector again? Enter 'y' or 'n'." << endl;
+    cout << "Choosing y will allow you to add items." << endl;
+    cin >> choice;
+
+    while (choice == "y")
+    {
+        cout << "Items in vector:" << endl;
+        for (int cntr = 0; cntr < myFoods.size(); cntr++)
+        {
+            cout << myFoods.at(cntr) << endl;
+        }
+        cout << endl;
+        cout << "Would you like to enter another food? y/n " << endl;
+        cin >> choice;
+        //Display the completed array option.
+        while (choice == "y")
+        {
+            cout << "Please enter one of your favorite foods " << endl;
+            cin.ignore();
+            getline(cin, favorite);
+            myFoods.push_back(favorite);
+            for (int colcntr = 0; colcntr < myFoods.size(); colcntr++)
+            {
+                cout << colcntr << " " << myFoods.at(colcntr) << endl;
+            }
+            cout << "Would you like to enter another food? y/n " << endl;
+            cin >> choice;
+        }
+    }
+    return;
+}
+
+void problem8()
+{
+    //Program 8 Allows the user to enter numbers, add the numbers, average
+    //the numbers, and print the answers, and empty the vector.
+    cout << "\nThis is problem 8." << endl;
+    int colcntr = 0;
+    double total = 0;
+    double average = 0;
+    string quit = "n";
+    string more = "y";
+    double inputnumber;
+    vector<double> ALNums;
+    cout << "You can submit numbers, and that's it. No extras." << endl;
+    cout << "Would you like to enter a number? (As if I have to ask) y/n " << endl;
+    cin >> more;
+    while (more == "y")
+    {
+        cout << "Good choice! Please enter a number." << endl;
+        cin >> inputnumber;
+        ALNums.push_back(inputnumber);
+        total = total + inputnumber;
+        average = total / ALNums.size();
+        for (int colcntr = 0; colcntr < ALNums.size(); colcntr++)
+        {
+            cout << colcntr << " " << ALNums.at(colcntr) << endl;
+        }
+        cout << "Would you like to enter another number? (Still not a choice) y/n" << endl;
+        cin >> more;
+    }
+    cout << endl << "That's too bad. Here is your sum: " << endl;
+    cout << total;
+    cout << endl << "Here is your average: " << endl;
+    cout << average << endl;
+
+    cout << "Would you like to clear the vector? y/n " << endl;
+    cin >> more;
+    while (more == "y")
+    {
+        ALNums.clear();
+        for (int colcntr = 0; colcntr < ALNums.size(); colcntr++)
+        {
+            cout << colcntr << " " << ALNums.at(colcntr) << endl;
+        }
+        cout << "Vector has been cleared." << endl;
+        more = " ";
+    }
+    return;
+}
+
+int main(int argc, char** argv)
+{
+    start();
+    problem1();
+    problem2();
+    problems3and4();
+    problem5();
+    problem6();
+    problem7();
+    problem8();
+
+    cin.get();
+
+    return 0;
+}
