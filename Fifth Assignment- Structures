@@ -1,0 +1,299 @@
+/* 
+ * File:   Structures.cpp
+ * Author: Kaleb
+ *
+ * Submitted May 23, 2014
+ */
+
+#include <cstdlib>
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+////////////////////////  Part 1  ////////////////////////
+//Create structure called pet
+
+struct pet
+{
+    string petname;
+    string breed;
+    string lastname;
+
+    double weight;
+};
+
+//Create vector called petlist
+
+void petlist()
+{
+    int removeslot = -1;
+    string confirm = "y";
+
+    //Set up the array structure
+    pet pewpewpew;
+    pewpewpew.breed;
+    pewpewpew.petname;
+    pewpewpew.lastname;
+    pewpewpew.weight;
+
+    //Set maximum number of entries to 50
+    pet VetFiles [50];
+
+    cout << "Would you like to add information to the Vet Files? y/n " << endl;
+    cin >> confirm;
+
+    while (confirm == "y")
+        //Input info into the structure
+    {
+        removeslot++;
+        cout << "Please enter the breed." << endl;
+        cin >> VetFiles[removeslot].breed;
+        cout << "Please enter the pet name." << endl;
+        cin >> VetFiles[removeslot].petname;
+        cout << "Please enter the owner's last name." << endl;
+        cin >> VetFiles[removeslot].lastname;
+        cout << "Please enter the pet's weight in numbers only." << endl;
+        cin >> VetFiles[removeslot].weight;
+        cout << "Would you like to add more vet file information? y/n" << endl;
+        cin >> confirm;
+    }
+
+    //Display the array
+    cout << "Here is a copy of your Vet Files: " << endl;
+    for (int addslot = 0; addslot <= removeslot; addslot++)
+    {
+        cout << VetFiles[addslot].breed << " "
+                << VetFiles[addslot].petname << " "
+                << VetFiles[addslot].lastname << " "
+                << VetFiles[addslot].weight << " lbs" << endl;
+    }
+    return;
+}
+
+////////////////////////  Part 2  ////////////////////////
+//Create structure called vehicle
+
+struct vehicle
+{
+    string make;
+    string model;
+    string color;
+
+    int year;
+};
+
+//Create vector called vehicle
+
+void Vehicles()
+{
+    int cntr = 0;
+    int vcntr = -1;
+
+    string quit = "n";
+    string addinfo = "y";
+    string findauto = "y";
+    string printfile = "y";
+    string searchmake;
+    string searchmodel;
+
+    int searchyear;
+
+    vehicle xx;
+
+    xx.make;
+    xx.model;
+    xx.year;
+    xx.color;
+
+    //My structure 'vehicle' is going into my vector 'VVehicle'
+    cout << "\nYou have left the pet program. " << endl;
+    cin.get();
+
+    cout << "Would you like to enter vehicle information? y/n" << endl << endl;
+    cin >> addinfo;
+
+    vector<vehicle> VVehicles;
+
+    while (addinfo == "y")
+    {
+        vcntr++;
+
+        VVehicles.push_back(vehicle());
+
+        cout << "Please enter the make." << endl;
+        cin >> VVehicles.at(vcntr).make;
+        cout << "\nPlease enter the model." << endl;
+        cin >> VVehicles.at(vcntr).model;
+        cout << "\nPlease enter the year." << endl;
+        cin >> VVehicles.at(vcntr).year;
+        cout << "\nPlease enter the color." << endl;
+        cin >> VVehicles.at(vcntr).color;
+
+        cout << "Would you like to add more vehicle information? y/n" << endl;
+        cin >> addinfo;
+    }
+
+    //This function makes it possible for the user to print the address & contents
+    cout << "Would you like to print the contents of your vehicle file? y/n" << endl;
+    cin >> printfile;
+
+    //This prints the address and the contents
+    if (printfile == "y")
+    {
+        for (int cntr = 0; cntr < VVehicles.size(); cntr++)
+        {
+            cout << cntr << " " << VVehicles.at(cntr).make << endl;
+
+            cout << cntr << " " << VVehicles.at(cntr).model << endl;
+            cout << cntr << " " << VVehicles.at(cntr).year << endl;
+            cout << cntr << " " << VVehicles.at(cntr).color << endl << endl;
+        }
+    }
+
+    //This section allows the user to choose to search for a vehicle by make, model, or year.
+    cout << "Would you like to search for a particular vehicle? y/n" << endl;
+    cin >> findauto;
+
+    if (findauto == "y")
+    {
+        for (;;)
+        {
+            int choice = 1.0;
+
+            string menuchoice;
+            string endnow = "end";
+            string searchchoice;
+
+            cout << "\nEnter the way you would like to search: " << endl;
+            cout << "1 for make, 2 for model, or 3 for year. " << endl;
+            cout << "Alternatively, type 'end' to quit altogether" << endl;
+            cin >> menuchoice;
+
+            if (menuchoice == endnow)
+            {
+                break;
+            }
+
+            choice = atoi(menuchoice.c_str());
+
+            switch (choice)
+            {
+                case 1:
+                {
+                    cout << endl;
+                    cout << "Please enter a make: \n";
+                    cin >> searchmake;
+
+                    for (cntr = 0; cntr < VVehicles.size(); cntr++)
+                    {
+                        if (searchmake == VVehicles.at(cntr).make)
+                        {
+                            cout << cntr << " " << VVehicles.at(cntr).make << endl;
+                            cout << cntr << " " << VVehicles.at(cntr).model << endl;
+                            cout << cntr << " " << VVehicles.at(cntr).year << endl;
+                            cout << cntr << " " << VVehicles.at(cntr).color << endl << endl;
+                        }
+                        cout << "Now exiting this part of the program." << endl;
+                        cin.get();
+                        cin.ignore();
+                    }
+                    return;
+                }
+
+                case 2:
+                {
+                    cout << "Please enter a model: \n";
+                    cin >> searchmodel;
+
+                    for (cntr = 0; cntr < VVehicles.size(); cntr++)
+                    {
+                        if (searchmodel == VVehicles.at(cntr).model)
+                        {
+                            cout << cntr << " " << VVehicles.at(cntr).make << endl;
+                            cout << cntr << " " << VVehicles.at(cntr).model << endl;
+                            cout << cntr << " " << VVehicles.at(cntr).year << endl;
+                            cout << cntr << " " << VVehicles.at(cntr).color << endl << endl;
+                        }
+                        cout << "Now exiting this part of the program." << endl;
+                        cin.get();
+                        cin.ignore();
+                    }
+                    return;
+                }
+
+                case 3:
+                {
+                    cout << "Please enter a year: \n";
+                    cin >> searchyear;
+
+                    for (cntr = 0; cntr < VVehicles.size(); cntr++)
+                    {
+                        if (searchyear == VVehicles.at(cntr).year)
+                        {
+                            cout << cntr << " " << VVehicles.at(cntr).make << endl;
+                            cout << cntr << " " << VVehicles.at(cntr).model << endl;
+                            cout << cntr << " " << VVehicles.at(cntr).year << endl;
+                            cout << cntr << " " << VVehicles.at(cntr).color << endl << endl;
+                        }
+                        cout << "Now exiting this part of the program." << endl;
+                        cin.get();
+                        cin.ignore();
+                    }
+                }
+            }
+        }
+    }
+    return;
+}
+
+////////////////////////  Part 3  ////////////////////////
+
+int main(int argc, char** argv)
+{
+    for (;;)
+    {
+        int choice = 1.0;
+
+        string menuchoice;
+        string endnow = "end";
+        string runall = "all";
+
+        cout << "Enter the part of the program you would like to run. " << endl;
+        cout << "Enter 1 for the pet program or 2 for the vehicle program." << endl;
+        cout << "You may type 'end' to quit altogether" << endl;
+        cout << "or you may type 'all' to run all parts of the program." << endl;
+        cin >> menuchoice;
+
+        if (menuchoice == endnow)
+        {
+            break;
+        }
+
+        if (menuchoice == runall)
+        {
+            petlist();
+            Vehicles();
+        }
+
+        choice = atoi(menuchoice.c_str());
+
+        switch (choice)
+        {
+            case 1:
+                cout << endl;
+                petlist();
+                break;
+
+            case 2:
+                cout << endl;
+                Vehicles();
+                break;
+        }
+    }
+
+    cin.get();
+
+    return 0;
+}
