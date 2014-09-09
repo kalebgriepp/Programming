@@ -1,0 +1,122 @@
+/* 
+ * File:   Pointers.cpp
+ * Author: Kaleb
+ *
+ * Created on May 21, 2014, 12:25 AM
+ */
+
+#include <cstdlib>
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+//This is Assignment 6 - Pointers
+
+int main(int argc, char** argv)
+{
+    //Create variable called xx with a value of 100
+    double xx = 100;
+
+    //Store the xx pointer memory allocation
+    double *pxx = &xx;
+
+    cout << "This is Assignment 6 - Pointers" << endl;
+    cout << "The value of *xx is: " << *pxx << endl;
+    cout << "The address is: " << pxx << endl << endl;
+
+    //Create variable called yy with a value of 200
+    //and store the pointer's memory allocation
+    int yy = 200;
+    int *pyy = &yy;
+
+    cout << "The value of *yy is: " << *pyy << endl;
+    cout << "The address is: " << pyy << endl << endl;
+
+    //Create a string called firstname with the value "Bob"
+    string firstname;
+    firstname = "Bob";
+
+    //Store the firstname memory allocation
+    string *pfirstname = &firstname;
+
+    cout << "The content of firstname is: " << *pfirstname << endl;
+    cout << "The address is: " << pfirstname << endl << endl;
+
+    //Create variable called zzz with value of 2.333
+    double zzz = 2.333;
+
+    //Create pointer for zzz
+    double *pzzz = &zzz;
+
+    cout << "The initial value of *zzz is: " << *pzzz << endl;
+    cout << "You can change the value in *zzz." << endl;
+    cout << "Enter a new value. " << endl;
+    cin >> *pzzz;
+
+    cout << "\nThe new value of *zzz is: " << *pzzz << endl;
+    cout << "The address is: " << pzzz << endl << endl;
+
+    //Create array with specified values
+    double arraymoo[5] = {1.11, 1.22, 1.33, 1.44, 1.55};
+
+    //Create pointer for the array
+    double *parraymoo;
+    parraymoo = arraymoo;
+
+    int cntr = 0;
+
+    cout << "Here are the contents of the initial array: ArrayMoo" << endl;
+    //Display array using a pointer
+    for (cntr = 0; cntr < 5; cntr++)
+    {
+        cout << *(parraymoo + cntr) << endl;
+    }
+
+    //This section will print the address and arrayname.
+    cout << "\nHere's the array name, contents, and address." << endl;
+    cout << "The name of this array is: Arraymoo" << endl;
+    cout << "Here are the contents and the address: " << endl << *(parraymoo) << endl << parraymoo << endl;
+    for (cntr = 0; cntr < 5; cntr++)
+    {
+        parraymoo++;
+    }
+    cout << endl;
+
+    //Display the array in reverse order using a pointer
+    cout << "Here are the contents of the initial array in reverse order:" << endl;
+    for (cntr = 0; cntr < 5; cntr++)
+    {
+        parraymoo--;
+        cout << *parraymoo << endl;
+    }
+
+    //Allow user to create 1D array and let them set the array values
+    int arraymax;
+    double *pmakearray;
+    int makearray[arraymax];
+    pmakearray = new double [makearray[arraymax]];
+
+    cout << "Create a specific number of boxes in order to store your information." << endl;
+    cout << "Enter the number of boxes you would like to create as a whole number." << endl;
+    cin >> arraymax;
+
+    cout << "Add your own numbers into each box up to the number you specified: " << arraymax << endl;
+    for (cntr = 0; cntr < arraymax; cntr++)
+    {
+        cin >> makearray[arraymax];
+    }
+    cout << endl;
+
+    //Display the user's data using a pointer
+    cout << "This is the data you input:" << endl;
+    for (int cntr = 0; cntr < arraymax; cntr++)
+    {
+        cout << *(pmakearray + cntr) << " " << endl;
+    }
+    cout << endl << endl;
+
+
+    return 0;
+}
